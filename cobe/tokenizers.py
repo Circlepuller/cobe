@@ -2,7 +2,6 @@
 
 import re
 import Stemmer
-import types
 
 
 class MegaHALTokenizer:
@@ -14,7 +13,7 @@ to be a token:
 
 This tokenizer ignores differences in capitalization."""
     def split(self, phrase):
-        if type(phrase) != types.UnicodeType:
+        if not(type(phrase) is str):
             raise TypeError("Input must be Unicode")
 
         if len(phrase) == 0:
@@ -35,7 +34,7 @@ This tokenizer ignores differences in capitalization."""
         chars = list(u"".join(words))
         start = True
 
-        for i in xrange(len(chars)):
+        for i in range(len(chars)):
             char = chars[i]
             if char.isalpha():
                 if start:
@@ -79,7 +78,7 @@ tokens."""
                                 re.UNICODE)
 
     def split(self, phrase):
-        if type(phrase) != types.UnicodeType:
+        if not(type(phrase) is str):
             raise TypeError("Input must be Unicode")
 
         # Strip leading and trailing whitespace. This might not be the
